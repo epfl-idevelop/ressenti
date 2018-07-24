@@ -4,6 +4,9 @@
 
 virtFold="venv"
 
+export LC_ALL="en_US.UTF-8"
+export LC_CTYPE="en_US.UTF-8"
+
 echo "**Ajouter le repo**"
 #Ajouter le repo
 curl -sL https://repos.influxdata.com/influxdb.key | sudo apt-key add -
