@@ -9,7 +9,7 @@ export LC_CTYPE="en_US.UTF-8"
 
 echo "**Getting last updates**"
 sudo apt-get  -qq update
-echo 'N' | sudo apt-get -y -qq upgrade
+echo 'Y' | sudo apt-get -y -qq upgrade
 
 echo "**Installing python, firefox and xvfb**"
 ## installing different program
@@ -18,8 +18,8 @@ sudo apt-get install -y -qq python3-dev python3-pip
 sudo apt-get install -y -qq xvfb
 sudo apt-get install -y -qq firefox
 
-pip install --upgrade pip
-pip3 install setuptools
+#pip install --upgrade pip
+pip install setuptools
 
 echo "**Getting drivers for firefox and chrome**"
 ## Installing Geckodriver for firefox
@@ -51,8 +51,8 @@ source $virtFold/bin/activate
 
 echo "**Installing selenium and virtual displays**"
 ## Installing selenium and pyvirtualdisplay to emulate a screen
-pip3 install selenium
-pip3 install pyvirtualdisplay
+pip install selenium
+pip install pyvirtualdisplay
 
 ## Desactivate virtual environment
 deactivate
