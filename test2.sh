@@ -1,5 +1,5 @@
 #Petit script pour tester si cela peut tourner en boucle juste pour un site web
-#zf181219.1719
+#zf181219.1724
 
 time_page() {
     label=$1
@@ -24,7 +24,7 @@ __EOF
 }
 
 while true ; do
-  time_page "epflhome"  "https://www.epfl.ch/"
+  time_page "www.epfl.ch"  "https://www.epfl.ch/"
 #  time_page "enac"  "https://www.epfl.ch/schools/enac/"
   sleep 10
 done
