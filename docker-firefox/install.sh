@@ -1,8 +1,8 @@
 #Petit script pour lancer le binz
-#zf181220.1038
+#zf181220.1100
 
 docker build -t "docker-firefox-zf" .
-docker run -d -i -v `pwd/..`:/root/work --name="docker-firefox" docker-firefox-zf
+docker run -d -i -v `pwd`/../:/root/work --name="docker-firefox" docker-firefox-zf
 
 
 echo -e "
