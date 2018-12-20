@@ -1,5 +1,5 @@
-#Petit script pour tester juste la durée d'une page
-#zf181219.1536
+#Petit script pour tester juste la durée d'une page 
+#zf181220.1023
 
 #time stamp du test
 #ztime=`date +%Y%m%d.%H%M%S-%N`
@@ -8,17 +8,17 @@
 #cd ./poubelle/$ztime
 
 
-zt1=`date +%s.%N`
+#zt1=`date +%s.%N`
 
-docker exec -it docker-firefox /bin/bash /root/work/test1.sh
+docker exec -it docker-firefox /bin/bash /root/work/screenshot.sh https://www.epfl.ch toto.png
 
-zt2=`date +%s.%N`
+#zt2=`date +%s.%N`
 
-zduree=`jq -n $zt2-$zt1`
+#zduree=`jq -n $zt2-$zt1`
 
 #rm -Rf test*
 
-echo -e $ztime" "$zduree
+#echo -e $ztime" "$zduree
 # > duree.txt
 
 
