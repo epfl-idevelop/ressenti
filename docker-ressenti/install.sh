@@ -1,5 +1,5 @@
 #Petit script pour lancer le binz
-#zf181221.1057
+#zf181221.1358
 
 docker build -t "docker-firefox-zf" .
 docker run -d -i -v `pwd`/../:/root/work --name="docker-ressenti" docker-firefox-zf
@@ -18,7 +18,7 @@ puis à l'intérieur du container:
 
 ou directement ceci:
 
-docker exec -it docker-firefox /bin/bash /root/work/the_script
+docker exec -it docker-ressenti /bin/bash /root/work/the_script
 
 
 "

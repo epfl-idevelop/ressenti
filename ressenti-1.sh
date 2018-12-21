@@ -1,7 +1,7 @@
 #Petit script pour lancer une mesure de temps sur une liste de site
-#ATTENTION: faire tourner dans le container docker-ressenti!
+#ATTENTION: faire tourner ce script DANS le container docker-ressenti!
 
-#zf181221.1305
+#zf181221.1408
 
 prometheus_ip="172.22.0.1"
 
@@ -11,14 +11,15 @@ time_page() {
     img=$3
 
     ztime=`date +%Y%m%d.%H%M%S`
-    zduree=`./screenshot.sh $url $img`
+    zduree=`/root/work/screenshot.sh $url $img`
+
     echo -e $ztime" "$zduree
 
-    t=${zduree::-1}				#supprime le dernier car
-    c=$(echo "$RANDOM % 2" | bc)		#juster pour tester la prochaine fonctionalite
+    t=${zduree::-1}				                        #supprime le dernier car
+    c=$(echo "$RANDOM % 2" | bc)		                #juster pour tester la prochaine fonctionalite
     cat <<__EOF | curl --data-binary @- http://$prometheus_ip:9091/metrics/job/zuzuresenti/instance/$label
         # TYPE zuzu_resenti_load_time gauge
-        zuzu_resenti_load_time $t
+        zuzu_resenti_load_time {location="berlin"} $t
         # TYPE zuzu_resenti_page_changed gauge
         zuzu_resenti_page_changed $c
 __EOF
