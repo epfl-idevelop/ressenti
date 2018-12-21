@@ -2,7 +2,26 @@
 #ATTENTION: faire tourner dans le host du container docker-ressenti!
 #ATTENTION: y'a encore des paramètre écrit en dur dans le code !
 
-#zf181221.1610
+#zf181221.1630
+
+zNAME="ressenti"
+echo -e "
+
+Afin de pouvoir garder $zNAME en marche tout en pouvant quitter la console, il serait bien de le faire tourner dans un 'screen' avec:
+
+screen -S $zNAME    pour entrer dans screen
+./start.sh             pour lancer le serveur WEB dans screen
+CTRL+a,d               pour sortir de screen en laissant tourner le serveur
+screen -r $zNAME    pour revenir dans screen
+screen -x $zNAME    pour revenir à plusieurs dans screen
+CTRL+d                 pour terminer screen
+screen -list           pour lister tous les screens en fonctionement
+
+"
+read -p "Appuyer une touche pour démarrer $zNAME"
+
+echo ---------- start
+
 
 docker container rm -f -v docker-ressenti
 docker run -d -i -v `pwd`/:/root/work --name="docker-ressenti" docker-firefox-zf
