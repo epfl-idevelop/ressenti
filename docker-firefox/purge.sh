@@ -1,8 +1,12 @@
 #!/bin/bash
 #Petit script pour nettoyer tout le binz
-#zf181221.1354
+#zf190115.1603
 
+docker container ls -a
+docker image ls
 docker container rm -f -v docker-firefox
-#docker image rm -f docker-firefox-zf
+docker image rm -f docker-firefox-zf
+docker container ls -a
+docker image ls
 
-#./list.sh
+k#./list.sh

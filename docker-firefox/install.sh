@@ -1,24 +1,24 @@
 #Petit script pour lancer le binz
-#zf181220.1100
+#zf190115.1737
 
+docker build -t "docker-ubuntu-zf" ~/docker-ubuntu/
 docker build -t "docker-firefox-zf" .
-docker run -d -i -v `pwd`/../:/root/work --name="docker-firefox" docker-firefox-zf
-
 
 echo -e "
 
+Image docker-firefox-zf construite !
 
-Après il faut faire:
+Après si on a besoin, il faut démarrer le container avec:
+docker run -d -i -v `pwd`/../:/root/work --name="docker-firefox" docker-firefox-zf
 
+ensuite pour entrer dans le container il faut faire:
 docker exec -it docker-firefox /bin/bash
 
-puis à l'intérieur du container:
-
-./test1.sh
-
 ou directement ceci:
+docker exec -it docker-firefox /bin/bash commande_a_tourner
 
-docker exec -it docker-firefox /bin/bash /root/work/test1.sh
+et pour enlever le container il faut faire:
+docker container rm -f -v docker-firefox
 
 
 "
