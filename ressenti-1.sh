@@ -1,9 +1,26 @@
 #Petit script pour lancer une mesure de temps sur une liste de site
 #ATTENTION: faire tourner ce script DANS le container docker-ressenti!
 
-#zf181221.1408
+#zf190118.0932
 
 prometheus_ip="172.22.0.1"
+
+
+
+
+triger_state() {
+    triger_val=$1
+
+    c=$(echo "$RANDOM % 2" | bc)                        #juster pour tester la prochaine fonctionalite
+    cat <<__EOF | curl --data-binary @- http://$prometheus_ip:9091/metrics/job/zuzuresenti/instance/triger
+        # TYPE zuzu_resenti_load_time gauge
+        zuzu_resenti_load_time {location="berlin"} $triger_val
+        # TYPE zuzu_resenti_page_changed gauge
+        zuzu_resenti_page_changed $c
+__EOF
+}
+
+
 
 time_page() {
     label=$1
@@ -24,6 +41,13 @@ time_page() {
         zuzu_resenti_page_changed $c
 __EOF
 }
+
+
+
+
+echo -e "triger 10"
+triger_state "10"
+
 
 
 echo -e "z.zufferey.com"
@@ -51,4 +75,5 @@ echo -e "jahia.epfl.ch"
 time_page "jahia.epfl.ch" "https://jahia.epfl.ch" "jahia.epfl.ch"
 
 
-
+echo -e "triger 1"
+triger_state "1"

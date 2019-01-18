@@ -1,5 +1,5 @@
 #Petit script pour installer le binz
-#zf181220.1052
+#zf190115.1754
 
 #ATTENTION:
 #Il faut installer l'image docker de base Ubuntu:
@@ -7,8 +7,9 @@
 #et le service Prometheus/Grafana:
 #https://github.com/zuzu59/docker-prometheus-grafana
 
-
-./docker-firefox/install.sh
+cd ./docker-firefox
+./install.sh
+cd ..
 mkdir ./images
 
 

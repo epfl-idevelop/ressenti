@@ -2,7 +2,7 @@
 #ATTENTION: faire tourner dans le host du container docker-ressenti!
 #ATTENTION: y'a encore des paramètre écrit en dur dans le code !
 
-#zf190107.1521
+#zf190118.0936
 
 zNAME="ressenti"
 echo -e "
@@ -31,8 +31,9 @@ while true ; do
     echo -e "
 Et voilà, c'est parti pour un tour de carousel
 "
+    date
     docker exec -it docker-ressenti /bin/bash /root/work/ressenti-1.sh
-  sleep 10
+  sleep 30
 done
 
 
