@@ -1,5 +1,9 @@
 #Petit script pour lancer le binz
-#zf190115.1737
+#zf190205.1559
+
+docker container rm -f -v docker-ressenti
+docker container rm -f -v docker-firefox
+docker image rm docker-firefox-zf
 
 docker build -t "docker-ubuntu-zf" ~/docker-ubuntu/
 docker build -t "docker-firefox-zf" .
@@ -19,6 +23,10 @@ docker exec -it docker-firefox /bin/bash commande_a_tourner
 
 et pour enlever le container il faut faire:
 docker container rm -f -v docker-firefox
+
+et pour effacer l'image de firefox
+docker container rm -f -v docker-firefox
+docker image rm docker-firefox-zf
 
 
 "

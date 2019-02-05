@@ -1,4 +1,4 @@
-#zf190205.1608
+#zf190115.1642
 #dépend de https://github.com/zuzu59/docker-ubuntu
 
 FROM docker-ubuntu-zf
@@ -7,9 +7,4 @@ MAINTAINER Christian Zufferey <christian@zufferey.com>
 
 
 RUN apt-get update && apt-get install -yq \
-#    unzip \
     firefox
-
-#COPY firefox_config.zip /root
-#RUN unzip firefox_config.zip
-
