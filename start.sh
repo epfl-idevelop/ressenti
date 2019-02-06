@@ -2,7 +2,7 @@
 #ATTENTION: faire tourner dans le host du container docker-ressenti!
 #ATTENTION: y'a encore des paramètre écrit en dur dans le code !
 
-#zf190118.0936
+#zf190206.1241
 
 zNAME="ressenti"
 echo -e "
@@ -21,9 +21,8 @@ screen -list           pour lister tous les screens en fonctionement
 read -p "Appuyer une touche pour démarrer $zNAME"
 
 echo ---------- start
-
-
 docker container rm -f -v docker-ressenti
+docker container rm -f -v docker-firefox
 docker run -d -i -v `pwd`/:/root/work --name="docker-ressenti" docker-firefox-zf
 sleep 3
 

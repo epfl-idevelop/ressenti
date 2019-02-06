@@ -1,5 +1,5 @@
 #Dockerfile pour mettre un browser Firefox 64.x dans un container Docker
-#zf190206.1033
+#zf190206.1204
 #dépend de https://github.com/zuzu59/docker-ubuntu
 #source pour vnc: https://stackoverflow.com/questions/49377744/how-to-run-docker-image-in-ubuntu-with-vnc
 #use: sudo apt install xvnc4viewer
@@ -14,15 +14,17 @@ MAINTAINER Christian Zufferey <christian@zufferey.com>
 USER root
 
 #partie Firefox version figée
-RUN apt-get update && apt-get install -yq wget
-
+RUN apt-get update && apt-get install -yq wget firefox
+RUN apt -yq remove firefox
 RUN wget https://netix.dl.sourceforge.net/project/ubuntuzilla/mozilla/apt/pool/main/f/firefox-mozilla-build/firefox-mozilla-build_64.0.2-0ubuntu1_amd64.deb
-#RUN dpkg -i firefox-mozilla-build_64.0.2-0ubuntu1_amd64.deb
+RUN apt install ./firefox-mozilla-build_64.0.2-0ubuntu1_amd64.deb
+COPY test1.sh /root
 
 #partie VNC
-#RUN apt-get install -yq x11vnc xvfb feh
-#RUN mkdir ~/.vnc
-#RUN x11vnc -storepasswd 1234 ~/.vnc/passwd
+RUN apt-get install -yq x11vnc xvfb feh
+RUN mkdir ~/.vnc
+RUN x11vnc -storepasswd "" ~/.vnc/passwd
+COPY alias /root
 
 #partie utilitaires de debug
 #RUN apt-get install -yq net-tools

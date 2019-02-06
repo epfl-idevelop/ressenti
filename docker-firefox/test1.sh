@@ -1,7 +1,8 @@
 #Petit script pour tester firefox en mode headless
-#zf181218.1653
+#zf190206.1234
 
-zpath="/root/work/"
-firefox -headless -screenshot $zpath./toto.png https://www.epfl.ch/
-chmod 777 $zpath./toto.png
+#ATTENTION, il faut le faire tourner dans le container en mode graphique via VNC !
+
+firefox --screenshot http://z.zufferey.com
+feh -.
 

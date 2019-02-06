@@ -1,9 +1,9 @@
 #Petit script pour lancer le binz
-#zf190206.1023
+#zf190206.1147
 
 docker container rm -f -v docker-ressenti
 docker container rm -f -v docker-firefox
-docker image rm docker-firefox-zf
+docker image rm -f docker-firefox-zf
 
 docker build -t "docker-ubuntu-zf" ~/docker-ubuntu/
 docker build -t "docker-firefox-zf" .

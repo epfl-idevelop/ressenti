@@ -1,7 +1,7 @@
 #Petit script pour lancer une mesure de temps sur une liste de site
 #ATTENTION: faire tourner ce script DANS le container docker-ressenti!
 
-#zf190205.1642
+#zf190206.1153
 
 prometheus_ip="172.22.0.1"
 
@@ -66,31 +66,31 @@ triger_state "10"
 
 
 echo -e "z.zufferey.com"
-time_page "z.zufferey.com" "http://z.zufferey.com/" "z.zufferey.com"
+time_page "z.zufferey.com" "http://z.zufferey.com" "z.zufferey.com"
 
 echo -e "www.epfl.ch"
-time_page "www.epfl.ch" "https://www.epfl.ch/" "www.epfl.ch"
+time_page "www.epfl.ch" "https://www.epfl.ch" "www.epfl.ch"
 
 echo -e "actu.epfl.ch"
-time_page "actu.epfl.ch" "https://actu.epfl.ch/" "actu.epfl.ch"
+time_page "actu.epfl.ch" "https://actu.epfl.ch" "actu.epfl.ch"
 
 echo -e "memento.epfl.ch"
-time_page "memento.epfl.ch" "https://memento.epfl.ch/" "memento.epfl.ch"
+time_page "memento.epfl.ch" "https://memento.epfl.ch" "memento.epfl.ch"
 
 echo -e "people.epfl.ch"
-time_page "people.epfl.ch" "https://people.epfl.ch/christian.zufferey/" "people.epfl.ch"
+time_page "people.epfl.ch" "https://people.epfl.ch/christian.zufferey" "people.epfl.ch"
 
 echo -e "gel.epfl.ch"
-time_page "gel.epfl.ch" "https://gel.epfl.ch/" "gel.epfl.ch"
+time_page "gel.epfl.ch" "https://gel.epfl.ch" "gel.epfl.ch"
 
 echo -e "jahia.epfl.ch"
-time_page "jahia.epfl.ch" "https://jahia.epfl.ch/" "jahia.epfl.ch"
+time_page "jahia.epfl.ch" "https://jahia.epfl.ch" "jahia.epfl.ch"
 
 echo -e "www.abcm.ch"
-time_page "www.abcm.ch" "https://www.abcm.ch/" "www.abcm.ch"
+time_page "www.abcm.ch" "https://www.abcm.ch" "www.abcm.ch"
 
 echo -e "www.makerspace-lausanne.ch"
-time_page "www.makerspace-lausanne.ch" "http://www.makerspace-lausanne.ch:8000/" "www.makerspace-lausanne.ch"
+time_page "www.makerspace-lausanne.ch" "http://www.makerspace-lausanne.ch" "www.makerspace-lausanne.ch"
 
 
 
