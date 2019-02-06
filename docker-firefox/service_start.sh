@@ -1,12 +1,11 @@
-# petit script qui fait un ping et met le résultat dans le fichier tutu.txt et demande une input au clavier pour bloquer le script
-# zf181219.0852
+#!/bin/bash
+#Permet de lancer le serveur VNC dans le container
+#zf190206.1029
+#source: https://stackoverflow.com/questions/49377744/how-to-run-docker-image-in-ubuntu-with-vnc
 
-echo -e "\nStart..."
-ping -c 1 8.8.8.8 > tutu.txt
-cat tutu.txt
+alias zview='feh -.'
 
-echo -e "\ntouch return for end..."
-read zkeyboard
-echo -e "Stop...\n"
+x11vnc -forever -usepw -create &
+/bin/bash
 
 

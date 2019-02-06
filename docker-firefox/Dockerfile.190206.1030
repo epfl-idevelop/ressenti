@@ -1,0 +1,27 @@
+#zf190205.1752
+#dépend de https://github.com/zuzu59/docker-ubuntu
+#source pour vnc: https://stackoverflow.com/questions/49377744/how-to-run-docker-image-in-ubuntu-with-vnc
+#use: sudo apt install xvnc4viewer
+#use: docker run -d -i -v `pwd`/../:/root/work -p 5959:5900 --name="docker-firefox" docker-firefox-zf
+#use: xvncviewer localhost:5959
+
+MAINTAINER Christian Zufferey <christian@zufferey.com>
+
+FROM docker-ubuntu-zf
+
+RUN apt-get update && apt-get install -yq \
+    firefox
+
+#partie VNC
+RUN apt-get install -y x11vnc xvfb feh
+RUN mkdir ~/.vnc
+RUN x11vnc -storepasswd 1234 ~/.vnc/passwd
+
+RUN apt-get install net-tools
+
+COPY service_start.sh /root
+RUN chmod 755 /root/service_start.sh
+
+ENTRYPOINT /root/service_start.sh
+WORKDIR /root
+
