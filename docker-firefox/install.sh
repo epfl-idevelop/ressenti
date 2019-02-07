@@ -1,5 +1,5 @@
 #Petit script pour lancer le binz
-#zf190207.1405
+#zf190207.1502
 
 docker container rm -f -v docker-ressenti
 docker container rm -f -v docker-firefox
@@ -13,13 +13,15 @@ echo -e "
 Image docker-firefox-zf construite !
 
 Après si on a besoin, il faut démarrer le container avec:
-docker run -d -i -v `pwd`/../:/root/work -p 127.0.0.1:5959:5900 --name="docker-firefox" docker-firefox-zf
+docker run -d -i -v `pwd`/../:/root/work -p 127.0.0.1:5960:5900 --name="docker-firefox" docker-firefox-zf
 
 ensuite pour entrer dans le container il faut faire:
 docker exec -it docker-firefox /bin/bash
+docker exec -it docker-ressenti /bin/bash
 
 ou pour entrer 'graphiquement' dans le container il faut faire (passwd=1234):
 sudo apt install xvnc4viewer
+xvncviewer localhost:5960
 xvncviewer localhost:5959
 
 ou directement ceci:
