@@ -4,8 +4,8 @@
 #test si l'argument est vide
 if [ -z "$1" ]
   then
-    echo -e "\nSyntax: ./send_prometheus.sh location_test site_label load_time page_similar"
-    echo -e "\nSyntax: ./send_prometheus.sh epfl toto 12 0.85\n\n"
+    echo -e "\nSyntax: ./send_prometheus.sh location_test site_label load_time page_similar\n"
+    echo -e "./send_prometheus.sh epfl toto 12 0.85\n\n"
     exit
 fi
 

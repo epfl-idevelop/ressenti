@@ -2,7 +2,7 @@
 #ATTENTION: faire tourner dans le host du container docker-ressenti!
 #ATTENTION: y'a encore des paramètre écrit en dur dans le code !
 
-#zf190207.1448
+#zf190207.1628
 
 zNAME="ressenti"
 echo -e "
@@ -26,13 +26,16 @@ docker container rm -f -v docker-firefox
 docker run -d -i -v `pwd`/:/root/work -p 127.0.0.1:5959:5900 --name="docker-ressenti" docker-firefox-zf
 sleep 3
 
+./send_prometheus.sh epfl trig 15 1
+sleep 15
+
 while true ; do
     echo -e "
 Et voilà, c'est parti pour un tour de carousel
 "
     date
     docker exec -it docker-ressenti /bin/bash /root/work/ressenti-1.sh
-  sleep 30
+  sleep 15
 done
 
 
