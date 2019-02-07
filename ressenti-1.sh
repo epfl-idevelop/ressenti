@@ -1,7 +1,7 @@
 #Petit script pour lancer une mesure de temps sur une liste de site
 #ATTENTION: faire tourner ce script DANS le container docker-ressenti!
 
-#zf190207.1626
+#zf190207.1705
 
 time_page() {
     label=$1
@@ -14,13 +14,6 @@ time_page() {
     t=${zduree::-1}				                        #supprime le dernier car
     /root/work/send_prometheus.sh epfl $label $t 1
 }
-
-
-
-
-echo -e "triger 10"
-/root/work/send_prometheus.sh epfl trig 10 1
-
 
 
 echo -e "z.zufferey.com"
@@ -50,15 +43,9 @@ time_page "jahia.epfl.ch" "https://jahia.epfl.ch" "jahia.epfl.ch"
 #echo -e "www.abcm.ch"
 #time_page "www.abcm.ch" "https://www.abcm.ch" "www.abcm.ch"
 
-#echo -e "www.abcm.ch_wp"
+echo -e "www.abcm.ch_wp"
 time_page "www.abcm.ch-wp" "http://www.abcm.ch/wp" "www.abcm.ch-wp"
 
-#echo -e "www.makerspace-lausanne.ch"
+echo -e "www.makerspace-lausanne.ch"
 time_page "www.makerspace-lausanne.ch" "http://www.makerspace-lausanne.ch" "www.makerspace-lausanne.ch"
-
-
-
-
-echo -e "triger 1"
-/root/work/send_prometheus.sh epfl trig 2 1
 

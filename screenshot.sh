@@ -1,5 +1,5 @@
 #Petit script pour faire une copie d'écran d'une page web avec firefox en mode headless
-#zf190115.1807
+#zf190207.1726
 
 #test si l'argument est vide
 if [ -z "$1" ]
@@ -27,13 +27,13 @@ mv $zpath/$2.t1.png $zpath/$2.t0.png 2>/dev/null
 #zduree=`jq -n $zt2-$zt1`
 #echo -e "1er shot à blanc:" $zduree
 
-sync
-sync
-sleep 1
-zt1=`date +%s.%N`
-firefox -headless -screenshot about-blank.png about:blank 2>/dev/null
-zt2=`date +%s.%N`
-zduree=`jq -n $zt2-$zt1`
+#sync
+#sync
+#sleep 1
+#zt1=`date +%s.%N`
+#firefox -headless -screenshot about-blank.png about:blank 2>/dev/null
+#zt2=`date +%s.%N`
+#zduree=`jq -n $zt2-$zt1`
 #echo -e "1er shot:" $zduree
 
 sync
