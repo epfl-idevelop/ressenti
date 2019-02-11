@@ -1,6 +1,7 @@
 #Dockerfile pour mettre un browser Firefox 64.x dans un container Docker
-#zf190211.1057
+#zf190211.1121
 #dépend de https://github.com/zuzu59/docker-ubuntu
+#source: pour arrêter la telemetry: https://github.com/pyllyukko/user.js/
 #source pour vnc: https://stackoverflow.com/questions/49377744/how-to-run-docker-image-in-ubuntu-with-vnc
 #use: sudo apt install xvnc4viewer
 #use: docker run -d -i -v `pwd`/../:/root/work -p 5959:5900 --name="docker-firefox" docker-firefox-zf
