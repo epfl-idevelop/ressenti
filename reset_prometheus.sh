@@ -1,7 +1,10 @@
 #Petit script pour mettre à zéro toutes les valeurs du graphe Prometheus
 
-#zf190207.1732
+#zf190207.1813
 
+
+echo -e "overlay"
+./send_prometheus.sh epfl overlay 0 0.85
 
 echo -e "z.zufferey.com"
 ./send_prometheus.sh epfl z.zufferey.com 0 0.85

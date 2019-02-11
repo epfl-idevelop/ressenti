@@ -1,5 +1,5 @@
 #Petit script pour faire une copie d'écran d'une page web avec firefox en mode headless
-#zf190207.1726
+#zf190207.1803
 
 #test si l'argument est vide
 if [ -z "$1" ]
@@ -17,34 +17,16 @@ rm -rf /root/.cache/
 zpath="/root/work/images"
 mv $zpath/$2.t1.png $zpath/$2.t0.png 2>/dev/null
 
-
-#sync
-#sync
-#sleep 1
-#zt1=`date +%s.%N`
-#firefox -headless -screenshot about-blank.png about:blank 2>/dev/null
-#zt2=`date +%s.%N`
-#zduree=`jq -n $zt2-$zt1`
-#echo -e "1er shot à blanc:" $zduree
-
-#sync
-#sync
-#sleep 1
-#zt1=`date +%s.%N`
-#firefox -headless -screenshot about-blank.png about:blank 2>/dev/null
-#zt2=`date +%s.%N`
-#zduree=`jq -n $zt2-$zt1`
-#echo -e "1er shot:" $zduree
-
 sync
 sync
 sleep 1
 zt1=`date +%s.%N`
 firefox -headless -screenshot about-blank.png about:blank 2>/dev/null
 zt2=`date +%s.%N`
-zduree=`jq -n $zt2-$zt1`
-#echo -e "2e shot:" $zduree
+zduree=`echo "scale=4;$zt2-$zt1" |bc`
+#echo -e "étallonage:" $zduree
 zoverlay=$zduree
+/root/work/send_prometheus.sh epfl overlay $zoverlay 1
 
 sync
 sync
@@ -53,10 +35,9 @@ zt1=`date +%s.%N`
 timeout 31 firefox -headless -screenshot $zpath/$2.t1.png $1 2>/dev/null
 zt2=`date +%s.%N`
 chmod 777 $zpath/$2.t1.png 2>/dev/null
-
-zduree=`jq -n $zt2-$zt1-$zoverlay`
+zduree=`echo "scale=4;$zt2-$zt1-$zoverlay" |bc`
 if [ `echo "$zduree<0"|bc` -eq 1 ]; then
-	zduree=0
+	zduree=`echo "scale=4;$zt2-$zt1" |bc`
 fi
 
 echo -e $zduree

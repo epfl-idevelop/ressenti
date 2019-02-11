@@ -2,7 +2,7 @@
 #ATTENTION: faire tourner dans le host du container docker-ressenti!
 #ATTENTION: y'a encore des paramètre écrit en dur dans le code !
 
-#zf190207.1738
+#zf190207.1758
 
 zNAME="ressenti"
 echo -e "
@@ -40,7 +40,7 @@ while true ; do
     zt1=`date +%s.%N`
     docker exec -it docker-ressenti /bin/bash /root/work/ressenti-1.sh
     zt2=`date +%s.%N`
-    zduree=`jq -n $zt2-$zt1`
+    zduree=`echo "scale=4;($zt2-$zt1)/10" |bc`
     echo -e "Et voilà, c'est terminé"
     ./send_prometheus.sh epfl shot $zduree 1
     sleep 15
