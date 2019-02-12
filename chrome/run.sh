@@ -24,7 +24,4 @@ ODIR=run_out
   jahia.epfl.ch::https://jahia.epfl.ch \
   www.abcm.ch-wp::http://www.abcm.ch/wp \
   www.makerspace-lausanne.ch::http://www.makerspace-lausanne.ch \
-  | tee -a $ODIR/resenti.log
-
-
-
+  2>&1 | tee -a $ODIR/resenti.log
