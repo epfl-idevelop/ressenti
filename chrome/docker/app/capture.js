@@ -35,8 +35,13 @@ var fs = require('fs');
     //   isLandscape: false
     // });
     console.log("  Getting " + url);
-    await page.goto(url);
-
+    try 
+      await page.goto(url);
+    catch(error) {
+      console.log("Error while getting " + url + ": " + error);
+      context.close();
+      continue;
+    }
     var logpath = outdir + "/" + hn + ".log";
     var pngpath = outdir + "/" + hn + ".png";
 
