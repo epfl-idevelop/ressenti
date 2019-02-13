@@ -1,7 +1,7 @@
 #Petit script pour lancer une mesure de temps sur une liste de site
 #ATTENTION: faire tourner ce script DANS le container docker-ressenti!
 
-#zf190207.1705
+#zf190213.1116
 
 time_page() {
     label=$1
@@ -25,6 +25,9 @@ time_page "www.epfl.ch" "https://www.epfl.ch" "www.epfl.ch"
 echo -e "www.epfl.ch/wp-admin"
 time_page "www.epfl.ch-wp-admin" "https://www.epfl.ch/wp-admin" "www.epfl.ch-wp-admin"
 
+echo -e "dcsl.epfl.ch"
+time_page "dcsl.epfl.ch" "https://dcsl.epfl.ch" "dcsl.epfl.ch"
+
 echo -e "actu.epfl.ch"
 time_page "actu.epfl.ch" "https://actu.epfl.ch" "actu.epfl.ch"
 
@@ -43,8 +46,8 @@ time_page "jahia.epfl.ch" "https://jahia.epfl.ch" "jahia.epfl.ch"
 #echo -e "www.abcm.ch"
 #time_page "www.abcm.ch" "https://www.abcm.ch" "www.abcm.ch"
 
-echo -e "www.abcm.ch_wp"
-time_page "www.abcm.ch-wp" "http://www.abcm.ch/wp" "www.abcm.ch-wp"
+#echo -e "www.abcm.ch_wp"
+#time_page "www.abcm.ch-wp" "http://www.abcm.ch/wp" "www.abcm.ch-wp"
 
 echo -e "www.makerspace-lausanne.ch"
 time_page "www.makerspace-lausanne.ch" "http://www.makerspace-lausanne.ch" "www.makerspace-lausanne.ch"
