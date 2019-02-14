@@ -1,5 +1,5 @@
 #Petit script pour faire une copie d'écran d'une page web avec firefox en mode headless
-#zf190207.1803
+#zf190214.1617
 
 #test si l'argument est vide
 if [ -z "$1" ]
@@ -35,7 +35,7 @@ zt1=`date +%s.%N`
 timeout 31 firefox -headless -screenshot $zpath/$2.t1.png $1 2>/dev/null
 zt2=`date +%s.%N`
 chmod 777 $zpath/$2.t1.png 2>/dev/null
-zduree=`echo "scale=4;$zt2-$zt1-$zoverlay" |bc`
+zduree=`echo "scale=4;($zt2-$zt1-$zoverlay)*0.90" |bc`
 if [ `echo "$zduree<0"|bc` -eq 1 ]; then
 	zduree=`echo "scale=4;$zt2-$zt1" |bc`
 fi
