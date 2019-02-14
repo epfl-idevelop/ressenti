@@ -1,7 +1,7 @@
 #Petit script pour lancer une mesure de temps sur une liste de site
 #ATTENTION: faire tourner ce script DANS le container docker-ressenti!
 
-#zf190213.1116
+#zf190214.1530
 
 time_page() {
     label=$1
@@ -12,7 +12,7 @@ time_page() {
     zduree=`/root/work/screenshot.sh $url $img`
     echo -e $ztime" "$zduree
     t=${zduree::-1}				                        #supprime le dernier car
-    /root/work/send_prometheus.sh epfl $label $t 1
+    /root/work/send_prometheus.sh ressenti_epfl_firefox_siipc6 $label $t 1
 }
 
 
