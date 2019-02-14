@@ -1,5 +1,5 @@
 #Petit script pour faire une copie d'écran d'une page web avec firefox en mode headless
-#zf190214.1617
+#zf190214.1627
 
 #test si l'argument est vide
 if [ -z "$1" ]
@@ -17,6 +17,8 @@ rm -rf /root/.cache/
 zpath="/root/work/images"
 mv $zpath/$2.t1.png $zpath/$2.t0.png 2>/dev/null
 
+instance="ressenti_epfl_firefox_siipc6"
+
 sync
 sync
 sleep 1
@@ -26,7 +28,7 @@ zt2=`date +%s.%N`
 zduree=`echo "scale=4;$zt2-$zt1" |bc`
 #echo -e "étallonage:" $zduree
 zoverlay=$zduree
-/root/work/send_prometheus.sh epfl overlay $zoverlay 1
+/root/work/send_prometheus.sh $instance overlay $zoverlay 1
 
 sync
 sync
