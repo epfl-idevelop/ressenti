@@ -3,7 +3,7 @@
 #ATTENTION: faire tourner dans le host du container docker-ressenti!
 #ATTENTION: y'a encore des paramètre écrit en dur dans le code !
 
-#zf190214.1625
+#zf190222.0914
 
 zNAME="ressenti"
 echo -e "
@@ -45,7 +45,7 @@ while true ; do
     zduree=`echo "scale=4;($zt2-$zt1)/10" |bc`
     echo -e "Et voilà, c'est terminé"
     ./send_prometheus.sh $instance shot $zduree 1
-    sleep 15
+    sleep 60
 done
 
 
