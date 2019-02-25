@@ -1,5 +1,6 @@
 #Dockerfile pour mettre un browser Firefox 64.x dans un container Docker
-#zf190211.1121
+#zf190225.1416
+#source: pour le download de la version 64.x: https://sourceforge.net/projects/ubuntuzilla/files/mozilla/apt/pool/main/f/firefox-mozilla-build/
 #dépend de https://github.com/zuzu59/docker-ubuntu
 #source: pour arrêter la telemetry: https://github.com/pyllyukko/user.js/
 #source pour vnc: https://stackoverflow.com/questions/49377744/how-to-run-docker-image-in-ubuntu-with-vnc
@@ -17,7 +18,7 @@ USER root
 #partie Firefox version figée
 RUN apt-get update && apt-get install -yq wget zip firefox
 RUN apt -yq remove firefox
-RUN wget https://netix.dl.sourceforge.net/project/ubuntuzilla/mozilla/apt/pool/main/f/firefox-mozilla-build/firefox-mozilla-build_64.0.2-0ubuntu1_amd64.deb
+RUN wget https://netcologne.dl.sourceforge.net/project/ubuntuzilla/mozilla/apt/pool/main/f/firefox-mozilla-build/firefox-mozilla-build_64.0.2-0ubuntu1_amd64.deb
 RUN apt install ./firefox-mozilla-build_64.0.2-0ubuntu1_amd64.deb
 COPY test1.sh /root
 

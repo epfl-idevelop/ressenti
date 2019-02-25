@@ -1,5 +1,5 @@
 #Petit script pour envoyer à Prometheus les datas
-#zf190214.1556
+#zf19025.1450
 
 #test si l'argument est vide
 if [ -z "$1" ]
@@ -19,8 +19,9 @@ zsend() {
 __EOF
 }
 
-prometheus_ip1="172.22.0.1:9091"
-prometheus_ip2="172.22.0.1:9991"
+prometheus_ip1="172.17.0.1:9091"
+prometheus_ip2="172.17.0.1:9991"
+#prometheus_ip2="localhost:9891"
 
 zsend $prometheus_ip1 $1 $2 $3 $4 
 zsend $prometheus_ip2 $1 $2 $3 $4
