@@ -1,7 +1,7 @@
 #Petit script pour lancer une mesure de temps sur une liste de site
 #ATTENTION: faire tourner ce script DANS le container docker-ressenti!
 
-#zf190320.1119
+#zf190320.1134
 
 time_page() {
     label=$1
@@ -53,11 +53,11 @@ echo -e "www.makerspace-lausanne.ch"
 time_page "www.makerspace-lausanne.ch" "http://www.makerspace-lausanne.ch" "www.makerspace-lausanne.ch"
 
 echo -e "hivebrite.com"
-time_page "hivebrite.com" "http://hivebrite.com" "hivebrite.com"
+time_page "hivebrite.com" "https://hivebrite.com" "hivebrite.com"
 
 echo -e "epfl-test.hivebrite.com"
-time_page "epfl-test.hivebrite.com" "http://epfl-test.hivebrite.com" "epfl-test.hivebrite.com"
+time_page "epfl-test.hivebrite.com" "https://epfl-test.hivebrite.com" "epfl-test.hivebrite.com"
 
-echo -e "epfl.hivebrite.com"
-time_page "epfl.hivebrite.com" "http://epfl.hivebrite.com" "epfl.hivebrite.com"
+echo -e "epfl.hivebrite.ch"
+time_page "epfl.hivebrite.ch" "https://epfl.hivebrite.ch" "epfl.hivebrite.ch"
 
