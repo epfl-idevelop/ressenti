@@ -13,6 +13,13 @@ Ainsi on est certain que la page a été chargée avec tous les objets et pas se
 On peut aussi par la suite comparer les screenshots pour détecter une anomalie ou changement sur la page.
 
 
+
+## Nouvelle version basée sur une API (web service), donc ce n'est plus à jour ici (zf190411.1537)
+
+
+
+
+
 ## Installation
 (c'est confu, mais c'est pour moi pour me souvenir après coup, et c'est provisoire en attendant d'avoir une meilleure solution)
 Pour que 'ressenti' puisse publier sur la gateway Prometheus du NOC de la FSD il faut creuser en premier quelques tunnels SSH:
