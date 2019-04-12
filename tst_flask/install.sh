@@ -1,8 +1,8 @@
 #!/bin/bash
 #Petit script pour installer le framework Flask
-#zf190411.1543
+#zf190412.1659
 
 
-pip install Flask
+sudo pip install Flask
 
 
