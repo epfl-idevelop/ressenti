@@ -4,7 +4,7 @@
 #Première version toute simple du web service ressenti en mode synchrone
 #use: http://siipc6.epfl.ch:5050/url/http/z.zufferey.com
 
-print ("\n\nsync_ressenti.py   zf190415.0931 ")
+print ("\n\nsync_ressenti.py   zf190415.1108 ")
 print("\nUsage: http://siipc6.epfl.ch:5050/url/http/z.zufferey.com\n\n")
 
 #source: http://sdz.tdct.org/sdz/creez-vos-applications-web-avec-flask.html#Premierspas
