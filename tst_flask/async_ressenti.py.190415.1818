@@ -2,7 +2,7 @@
 # -*- coding:utf-8 -*-
 
 #Deuxième version toute simple du web service ressenti en mode asynchrone
-zapli="\n\nsync_ressenti.py   zf190415.1841 \n"
+zapli="\n\nsync_ressenti.py   zf190415.1721 \n"
 zusage="Usage: http://siipc6.epfl.ch:5050/url/http/z.zufferey.com\n\n"
 
 #source: http://sdz.tdct.org/sdz/creez-vos-applications-web-avec-flask.html#Premierspas
@@ -27,17 +27,17 @@ class zget_time(threading.Thread):
         threading.Thread.__init__(self)
 
     def run(self):
-        while str(threading.enumerate()[0]).find("started") > 0 :
+        while True :
             while len(zstack) > 0 :
-                print("zstack: " + str(zstack))
+                print("zstack: " + zstack)
                 zurl = zstack[0]
                 print("je mesure: " + zurl)
                 time.sleep(3)               #je vais mesurer l'url :-)
                 print("url retiree: " + zstack.pop(0))        #je retire l'url du fifo
-            time.sleep(2)
+            time.sleep(1)
             print("je boucle :-)")
             print("len of stack: " + str(len(zstack)))
-            print("thread.enumerate: " + str(str(threading.enumerate()[0]).find("started")))
+            print("thread.enumerate: " + str(threading.enumerate()))
 
 
 
@@ -83,7 +83,7 @@ if __name__ == '__main__':
 
     thread_1 = zget_time()
     thread_1.start()
-    app.run(host='0.0.0.0',port=5000, debug=True, use_reloader=False)
+    app.run(host='0.0.0.0',port=5000, debug=True)
 
 
 
