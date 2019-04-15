@@ -19,12 +19,14 @@ app = Flask(__name__)
 
 
 
-
+zstack = []
 
 @app.route('/toto')
 def toto():
     zurl = request.args.get('url')
     print("url: " + zurl)
+    zstack.append(zurl)
+    print(zstack)
 
     return "c'est ok !"
 
