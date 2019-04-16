@@ -1,0 +1,21 @@
+version: '3'
+services:
+  prometheus:
+    image: prom/prometheus
+    ports:
+      - "${PROMETHEUS_PORT:-9090}:9090"
+    restart: always
+    volumes:
+      - ./prometheus:/etc/prometheus
+    restart: always
+
+  blackbox-exporter:
+    image: prom/blackbox-exporter
+    volumes:
+      - ./blackbox-exporter/config:/config
+    ports: 
+      - "${PROMETHEUS_BLACKBOX_EXPORTER_PORT:-9115}:9115"
+    restart: always
+    command: --config.file=/config/blackbox.yml
+    restart: always
+
