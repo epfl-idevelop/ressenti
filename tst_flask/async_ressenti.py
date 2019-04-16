@@ -31,24 +31,29 @@ class zbench_time(threading.Thread):
     def run(self):
         while str(threading.enumerate()[0]).find("started") > 0 :
             while len(zstack) > 0 :
-                print("zbench_time zstack: " + str(zstack))
+                print("zbench_time, zstack: " + str(zstack))
                 zurl = zstack[0]
-                print("je mesure: " + zurl)
-                time.sleep(3)               #je vais mesurer l'url :-)
-                ztime_table[zurl][0] = datetime.datetime.now()
-                print("url retiree: " + zstack.pop(0))        #je retire l'url du fifo
+                print("zbench_time, je mesure: " + zurl)
+                time.sleep(5)               #je vais mesurer l'url :-)
+                ztime_table[zurl] = (5, datetime.datetime.now())
+                print("zbench_time, ztime_table: " + str(ztime_table))
+                print("zbench_time, url retiree: " + zstack.pop(0))        #je retire l'url du fifo
+                print("zbench_time, len of stack: " + str(len(zstack)))
             time.sleep(2)
-            print("je boucle :-)")
-            print("len of stack: " + str(len(zstack)))
-            print("thread.enumerate: " + str(str(threading.enumerate()[0]).find("started")))
+            print("zbench_time, je boucle :-)")
+#            print("zbench_time, thread.enumerate: " + str(str(threading.enumerate()[0]).find("started")))
 
 
 
-def zget_time(zget_url):
-    if ztime_table.get(zget_url, True):
-        ztime_table[zget_url]={}
-        ztime_table[zget_url][0] = "0"
-    return ztime_table[zget_url][0]
+def zcheck_time(zcheck_url):
+    print("zcheck_time, zcheck_url: " + str(zcheck_url))
+    if ztime_table.get(zcheck_url, False):
+        print("zcheck_time, elle existe !")
+    else:
+        ztime_table[zcheck_url]={}
+        ztime_table[zcheck_url] = ("000000", datetime.datetime.now())
+        print("zcheck_time, elle n'existe pas !")
+    return 
 
 
 
@@ -56,12 +61,17 @@ def zget_time(zget_url):
 @app.route('/toto')
 def toto():
     zurl = request.args.get('url')
-    print("url: " + zurl)
-    zstack.append(zurl)
-    print("route toto zstack: " + str(zstack))
-    print("route toto ztime_table: " + str(ztime_table))
-
-    return zapli + "<br><br>c'est ok !  " + zget_time(zurl)
+    print("route toto, url: " + zurl)
+    
+    if "zurl" in zstack:
+        print("route toto, existe")
+    else:
+        print("rout toto, existe pas")
+        zstack.append(zurl)
+    print("route toto, zstack: " + str(zstack))
+    print("route toto, ztime_table: " + str(ztime_table))
+    zcheck_time(zurl)
+    return zapli + "<br><br>" + str(zurl) + "a duré " + str(ztime_table[zurl][0]) + " secondes à " + str(ztime_table[zurl][1])
 
 
 
