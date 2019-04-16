@@ -19,3 +19,12 @@ services:
     command: --config.file=/config/blackbox.yml
     restart: always
 
+  ressentibox-exporter:
+    build: ../test_flask
+    volumes:
+      - "/Users/dom/Library/Application Support/IntelliJIdea2019.1/python:/pydebug"
+    ports:
+      - "${PROMETHEUS_RESSENTIBOX_EXPORTER_PORT:-9116}:9116"
+    command:
+      - python
+      - "/code/sync_ressenti.py"
