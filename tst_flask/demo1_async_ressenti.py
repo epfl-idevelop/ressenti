@@ -2,7 +2,7 @@
 # -*- coding:utf-8 -*-
 
 #Deuxième version toute simple du web service ressenti en mode asynchrone
-zapli="\n\n async_ressenti.py   zf190416.0840 \n"
+zapli="\n\n demo1_async_ressenti.py   zf190415.1841 \n"
 zusage="Usage: http://siipc6.epfl.ch:5050/url/http/z.zufferey.com\n\n"
 
 #source: http://sdz.tdct.org/sdz/creez-vos-applications-web-avec-flask.html#Premierspas
