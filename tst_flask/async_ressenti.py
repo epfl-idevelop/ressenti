@@ -61,13 +61,15 @@ def zcheck_time(zcheck_url):
 @app.route('/toto')
 def toto():
     zurl = request.args.get('url')
-    print("route toto, url: " + zurl)
-    
-    if "zurl" in zstack:
+    print("\n\nroute toto, url: " + zurl)
+    print("route toto, zstack: " + str(zstack))
+
+    if zurl in zstack:
         print("route toto, existe")
     else:
-        print("rout toto, existe pas")
+        print("route toto, n'existe pas")
         zstack.append(zurl)
+
     print("route toto, zstack: " + str(zstack))
     print("route toto, ztime_table: " + str(ztime_table))
     zcheck_time(zurl)
