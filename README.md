@@ -5,7 +5,7 @@
 Mesure le ressenti (durée) d'un utilisateur au chargement d'une page web complexe
 
 
-## Méthode
+## Méthode 
 On mesure le temps de chargement d'une page avec le browser Firefox en mode headless et on la sauve dans un fichier.
 
 Ainsi on est certain que la page a été chargée avec tous les objets et pas seulement le code HTML.
