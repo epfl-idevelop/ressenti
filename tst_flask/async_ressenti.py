@@ -2,7 +2,7 @@
 # -*- coding:utf-8 -*-
 
 #Deuxième version toute simple du web service ressenti en mode asynchrone
-zapli="\n\n async_ressenti.py   zf190416.0929 \n"
+zapli="\n\n async_ressenti.py   zf190416.1732 \n"
 zusage="Usage: http://siipc6.epfl.ch:5050/url/http/z.zufferey.com\n\n"
 
 #source: http://sdz.tdct.org/sdz/creez-vos-applications-web-avec-flask.html#Premierspas
@@ -34,8 +34,22 @@ class zbench_time(threading.Thread):
                 print("zbench_time, zstack: " + str(zstack))
                 zurl = zstack[0]
                 print("zbench_time, je mesure: " + zurl)
-                time.sleep(5)               #je vais mesurer l'url :-)
-                ztime_table[zurl] = (5, datetime.datetime.now())
+#                time.sleep(5)               #je vais mesurer l'url :-)
+#                ztime_table[zurl] = (5, datetime.datetime.now())
+
+
+                zimg = zurl.replace('http://', '')  ;  zimg = zimg.replace('https://', '')  ;  zimg = zimg.replace('/', '_')
+                print("zbench_time, img: " + zimg)
+                zstart = time.time()
+                cmd = "docker exec -it docker-ressenti /bin/bash /root/work/screenshot.sh  " + zurl + " " + zimg
+                print("zbench_time, cmd: " + cmd)
+                os.system(cmd)
+                zend = time.time()
+                zresult = str(zend-zstart)
+                ztime_table[zurl] = (zresult, datetime.datetime.now())
+
+
+
                 print("zbench_time, ztime_table: " + str(ztime_table))
                 print("zbench_time, url retiree: " + zstack.pop(0))        #je retire l'url du fifo
                 print("zbench_time, len of stack: " + str(len(zstack)))
