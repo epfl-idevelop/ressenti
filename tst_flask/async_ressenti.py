@@ -2,7 +2,7 @@
 # -*- coding:utf-8 -*-
 
 #Deuxième version toute simple du web service ressenti en mode asynchrone
-zapli="\n\n async_ressenti.py   zf190418.1147 \n"
+zapli="\n\n async_ressenti.py   zf190418.1504 \n"
 zusage="Usage: http://siipc6.epfl.ch:5050/url/http/z.zufferey.com\n\n"
 
 #source: http://sdz.tdct.org/sdz/creez-vos-applications-web-avec-flask.html#Premierspas
@@ -17,7 +17,6 @@ import os
 import subprocess
 import threading
 import random
-#import subprocess
 from flask import Flask, redirect, url_for, request, Response
 
 app = Flask(__name__)
@@ -66,7 +65,7 @@ def zcheck_time(zcheck_url):
         print("zcheck_time, elle existe !")
     else:
         ztime_table[zcheck_url]={}
-        ztime_table[zcheck_url] = ("000000", datetime.datetime.now())
+        ztime_table[zcheck_url] = ("0", datetime.datetime.now())
         print("zcheck_time, elle n'existe pas !")
     return 
 
@@ -93,15 +92,7 @@ def toto():
     return zresponse
 
 
-
-
-
-
-
-
-
-
-@app.route('/')
+@app.route('/tutu')
 def index():
     zurl = request.args.get('url')
     print("url: " + zurl)
@@ -132,21 +123,25 @@ def probe():
         return 'Break Citroën', 404
 
 
+
+
 def ressenti_firefox(target):
-    # start = time.time()
-    # cmd = "timeout 31 firefox -headless -screenshot toto.png " + proto + "://" + url + " 2>/dev/null"
-    # os.system(cmd)
-    # end = time.time()
-    # result = str(end-start)
-    result = random.random()
+    zurl = target
+    zcheck_stack(zurl)
+    zcheck_time(zurl)
+
+    result = str(ztime_table[zurl][0])
 
     metrics = Metrics()
-    metrics.add('probe_duration_seconds', 'gauge', result + 0.04)
+    metrics.add('probe_duration_seconds', 'gauge', result)
 
-    metrics.add('probe_ressenti_duration_seconds', 'gauge', result,
-                labels={'phase': 'connect'})
+#    metrics.add('probe_ressenti_duration_seconds', 'gauge', result,
+#                labels={'phase': 'connect'})
 
     return metrics.as_flask_response()
+
+
+
 
 
 def ressenti_chrome():
