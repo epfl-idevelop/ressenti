@@ -1,5 +1,6 @@
 #Petit script pour faire une copie d'écran d'une page web avec firefox en mode headless
-#zf190415.1127
+#ATTENTION, il DOIT tourner DANS le container docker-ressenti !
+#zf190424.1030
 
 #test si l'argument est vide
 if [ -z "$1" ]
@@ -15,7 +16,7 @@ echo "image: "$2
 
 zpath="/root/work/images"
 
-
+rm -rf /root/.cache/
 timeout 31 firefox -screenshot $zpath/$2.t1.png $1
 #2>/dev/null
 chmod 777 $zpath/$2.t1.png 

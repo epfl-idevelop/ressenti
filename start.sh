@@ -3,7 +3,7 @@
 #ATTENTION: faire tourner dans le host du container docker-ressenti!
 #ATTENTION: y'a encore des paramètre écrit en dur dans le code !
 
-#zf190415.1123
+#zf190424.1029
 
 zNAME="ressenti"
 echo -e "
@@ -22,6 +22,7 @@ screen -list           pour lister tous les screens en fonctionement
 read -p "Appuyer une touche pour démarrer $zNAME"
 
 echo ---------- start
+mkdir images
 docker container rm -f -v docker-ressenti
 docker container rm -f -v docker-firefox
 docker run -d -i -v `pwd`/:/root/work -p 127.0.0.1:5959:5900 --name="docker-ressenti" docker-firefox-zf
@@ -30,6 +31,11 @@ sleep 3
 
 
 exit
+
+
+
+
+
 
 instance="ressenti_epfl_firefox_siipc6"
 echo -e "On démarre la boucle des shots dans 15 secondes..."
