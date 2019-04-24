@@ -1,6 +1,6 @@
-#Petit script pour faire une copie d'écran d'une page web avec firefox en mode headless
+#Petit script pour effacer les caches de firefox et tirer à blanc une copie d'écran d'une page web avec firefox en mode headless
 #ATTENTION, il DOIT tourner DANS le container docker-ressenti !
-#zf190424.1443
+#zf190424.1425
 
 #test si l'argument est vide
 if [ -z "$1" ]
@@ -16,11 +16,22 @@ echo "image: "$2
 
 zpath="/root/work/images"
 
-#echo -e "on vide les caches.................."
+echo -e "on vide les caches.................."
 rm -rf /root/.cache/
+#rm -rf /root/.mozilla/
 
-echo -e "on tire en vrai....................."
+echo -e "on tire à blanc....................."
 timeout 31 firefox -screenshot $zpath/$2.t1.png $1
+sleep 3
+
+echo -e "on tire à blanc une 2e fois....................."
+timeout 31 firefox -screenshot $zpath/$2.t1.png $1
+sleep 3
+
+
+
+#echo -e "on tire en vrai....................."
+#timeout 31 firefox -screenshot $zpath/$2.t1.png $1
 
 
 #2>/dev/null

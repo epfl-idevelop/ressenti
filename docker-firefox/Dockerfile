@@ -1,5 +1,6 @@
 #Dockerfile pour mettre un browser Firefox 64.x dans un container Docker
-#zf190225.1416
+#zf190424.1358
+
 #source: pour le download de la version 64.x: https://sourceforge.net/projects/ubuntuzilla/files/mozilla/apt/pool/main/f/firefox-mozilla-build/
 #dépend de https://github.com/zuzu59/docker-ubuntu
 #source: pour arrêter la telemetry: https://github.com/pyllyukko/user.js/
@@ -27,9 +28,10 @@ RUN apt-get install -yq x11vnc jwm xvfb feh
 RUN mkdir ~/.vnc
 RUN x11vnc -storepasswd "" ~/.vnc/passwd
 COPY alias /root
+RUN echo "source /root/alias" >> /root/.bashrc
 
 #partie utilitaires de debug
-#RUN apt-get install -yq net-tools
+RUN apt-get install -yq net-tools
 
 #partie entrypoint
 COPY service_start.sh /root

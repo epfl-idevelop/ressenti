@@ -4,7 +4,7 @@
 #ATTENTION: il faut installer en premier le container zubuntu: https://github.com/zuzu59/docker-ubuntu
 #ATTENTION: puis il faut builder le container firefox: ~/ressenti/docker-firefox/install.sh
 
-#zf190424.1129
+#zf190424.1411
 
 zNAME="ressenti"
 echo -e "
@@ -39,32 +39,6 @@ docker container rm -f -v docker-ressenti
 
 "
 
-exit
-
-
-
-
-
-
-instance="ressenti_epfl_firefox_siipc6"
-echo -e "On démarre la boucle des shots dans 15 secondes..."
-./reset_prometheus.sh
-./send_prometheus.sh $instance shot 0 1
-./send_prometheus.sh $instance trig 10 1
-sleep 15
-./send_prometheus.sh $instance trig 0 1
-
-while true ; do
-    echo -e "Et voilà, c'est parti pour un tour de carousel"
-    date
-    ./send_prometheus.sh $instance shot 0 1
-    zt1=`date +%s.%N`
-    docker exec -it docker-ressenti /bin/bash /root/work/ressenti-1.sh
-    zt2=`date +%s.%N`
-    zduree=`echo "scale=4;($zt2-$zt1)/10" |bc`
-    echo -e "Et voilà, c'est terminé"
-    ./send_prometheus.sh $instance shot $zduree 1
-    sleep 60
-done
+./tst_flask/async_ressenti.py
 
 
