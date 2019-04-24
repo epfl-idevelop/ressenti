@@ -2,7 +2,7 @@
 # -*- coding:utf-8 -*-
 
 #Deuxième version toute simple du web service ressenti en mode asynchrone
-zapli="\n\n async_ressenti.py   zf190424.1549 \n"
+zapli="\n\n async_ressenti.py   zf190424.1657 \n"
 zusage="Usage: http://siipc6.epfl.ch:5050/url/http/z.zufferey.com\n\n"
 
 #source: http://sdz.tdct.org/sdz/creez-vos-applications-web-avec-flask.html#Premierspas
@@ -29,13 +29,8 @@ class zbench_time(threading.Thread):
         threading.Thread.__init__(self)
 
     def run(self):
-        print("coucou")
-        print("zdebug, threading enumerate: " + str(str(threading.enumerate()[0]).find("started")))
         while str(threading.enumerate()[0]).find("started") > 0 :
-
-#            while len(zstack) > 0 :
             while len(zstack) > 0 and str(threading.enumerate()[0]).find("started") > 0 :
-                print("zbench_time, threading enumerate: " + str(str(threading.enumerate()[0]).find("started")))
                 print("zbench_time, zstack: " + str(zstack))
                 zurl = zstack[0]
                 print("zbench_time, je mesure: " + zurl)
@@ -73,26 +68,28 @@ class zbench_time(threading.Thread):
 
 
 def zcheck_time(zcheck_url):
-    print("zcheck_time, zcheck_url: " + str(zcheck_url))
+#    print("zcheck_time, zcheck_url: " + str(zcheck_url))
     if ztime_table.get(zcheck_url, False):
-        print("zcheck_time, elle existe !")
+#        print("zcheck_time, elle existe !")
+        pass
     else:
         ztime_table[zcheck_url]={}
         ztime_table[zcheck_url] = ("0", datetime.datetime.now())
-        print("zcheck_time, elle n'existe pas !")
+#        print("zcheck_time, elle n'existe pas !")
     return 
 
 
 def zcheck_stack(zurl):
-    print("\n\nzcheck_stack, url: " + zurl)
-    print("zcheck_stack, zstack: " + str(zstack))
+#    print("\n\nzcheck_stack, url: " + zurl + ".\n")
+#    print("zcheck_stack, zstack: " + str(zstack))
     if zurl in zstack:
-        print("zcheck_stack, existe")
+#        print("zcheck_stack, existe")
+        pass
     else:
-        print("zcheck_stack, n'existe pas")
+#        print("zcheck_stack, n'existe pas")
         zstack.append(zurl)
-    print("zcheck_stack, zstack: " + str(zstack))
-    print("zcheck_stack, ztime_table: " + str(ztime_table))
+#    print("zcheck_stack, zstack: " + str(zstack))
+#    print("zcheck_stack, ztime_table: " + str(ztime_table))
 
 
 
