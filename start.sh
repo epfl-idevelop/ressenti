@@ -1,9 +1,10 @@
 
 #Petit script pour lancer le binz
 #ATTENTION: faire tourner dans le host du container docker-ressenti!
-#ATTENTION: y'a encore des paramètre écrit en dur dans le code !
+#ATTENTION: il faut installer en premier le container zubuntu: https://github.com/zuzu59/docker-ubuntu
+#ATTENTION: puis il faut builder le container firefox: ~/ressenti/docker-firefox/install.sh
 
-#zf190424.1029
+#zf190424.1129
 
 zNAME="ressenti"
 echo -e "
@@ -24,11 +25,19 @@ read -p "Appuyer une touche pour démarrer $zNAME"
 echo ---------- start
 mkdir images
 docker container rm -f -v docker-ressenti
-docker container rm -f -v docker-firefox
+#docker container rm -f -v docker-firefox
 docker run -d -i -v `pwd`/:/root/work -p 127.0.0.1:5959:5900 --name="docker-ressenti" docker-firefox-zf
 sleep 3
 
+echo -e "
 
+Pour entrer dans le container:
+docker exec -it docker-ressenti /bin/bash
+
+Pour effacer complètement le container:
+docker container rm -f -v docker-ressenti
+
+"
 
 exit
 
